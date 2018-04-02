@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Idlebones</title>
+		<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<script src="./node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<style>
+			body {
+				background-image: url('morning.jpg');
+				background-repeat: no-repeat; 
+				background-size: cover;
+				color: #eee;
+			}
+			.spacer {
+				height: 50px;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body >
+		<div class="container-fluid">
+			<div class="spacer"></div>
+			<div class="text-center">
+				<h1><span id="greeting"></span></h1>
+			</div>
+		</div>
+	</body>
+
+	<script>
+		$(document).ready(function() {
+			var n = new Date().getHours();
+			var msg = "Hello! ";
+			if (n < 12) { 
+				msg = "Good morning "; 
+				$('body').css('background-image', 'url("morning.jpg")');
+			}
+			if (n > 12 && n < 18) { msg = "Good afternoon "; }
+			if (n >= 18) { 
+				msg = "Good night ";
+				$('body').css('background-image', 'url("night.jpg")');
+			}
+			$('#greeting').text(msg);
+		});
+	</script>
+
+</html>

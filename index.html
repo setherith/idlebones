@@ -17,6 +17,13 @@
 				height: 50px;
 				width: 100%;
 			}
+			input {
+				margin-right: 15px;
+			}
+			ul {
+				list-style: none;
+				margin: 0;
+			}			
 		</style>
 	</head>
 
@@ -24,25 +31,168 @@
 		<div class="container-fluid">
 			<div class="spacer"></div>
 			<div class="text-center">
-				<h1><span id="greeting"></span></h1>
+				
+				<div id="who">
+					<h1>Who are you?</h1>
+					<button id="Tyler" class="btn btn-primary">Tyler</button>
+					<button id="Abi" class="btn btn-danger">Abigail</button>
+				</div>
+				<h1><span id="greeting"></span> <span id="name"></span></h1>
+				<div id="title"><h1><u><span id="day">day</span>'s Chores</u></h1></div>
+
+				<ul class="monday chores abi">
+					<li><input type="checkbox">Dishwasher</li>
+					<li><input type="checkbox">Set Table</li>
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Check Washing</li>
+				</ul>
+
+				<ul class="tuesday chores abi">
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Empty Bathroom Bin</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Clean Highchairs</li>
+				</ul>
+
+				<ul class="wednesday chores abi">
+					<li><input type="checkbox">Dishwasher</li>
+					<li><input type="checkbox">Set Table</li>
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Check Washing</li>
+				</ul>
+
+				<ul class="thursday chores abi">
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Hoover Passage</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Give cats treat and cuddle</li>
+					<li><input type="checkbox">Clean Highchairs</li>
+				</ul>
+
+				<ul class="friday chores abi">
+					<li><input type="checkbox">Dishwasher</li>
+					<li><input type="checkbox">Set Table</li>
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Check Washing</li>
+				</ul>
+
+				<ul class="saturday chores abi">
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Check Toilet Rolls</li>
+					<li><input type="checkbox">Clean Highchairs</li>
+				</ul>
+
+				<ul class="sunday chores abi">
+					<li><input type="checkbox">Fill Dishwasher</li>
+					<li><input type="checkbox">Feed Cats</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Clean Bedroom</li>
+					<li><input type="checkbox">Clean Highchair</li>
+				</ul>
+
+				<ul class="monday chores tyler">
+					<li><input type="checkbox">Hoover Passage</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Check Toilet Rolls</li>
+					<li><input type="checkbox">Check Bins</li>
+					<li><input type="checkbox">Clean Highchairs</li>
+				</ul>
+
+				<ul class="tuesday chores tyler">
+					<li><input type="checkbox">Dishwasher</li>
+					<li><input type="checkbox">Set Table</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Clean Front Room</li>
+					<li><input type="checkbox">Check Bin</li>
+				</ul>
+
+				<ul class="wednesday chores tyler">
+					<li><input type="checkbox">Cat Litter</li>
+					<li><input type="checkbox">Clean Bath and Sink</li>
+					<li><input type="checkbox">Check Bin</li>
+					<li><input type="checkbox">Clean Highchairs</li>
+				</ul>
+
+				<ul class="thursday chores tyler">
+					<li><input type="checkbox">Dishwasher</li>
+					<li><input type="checkbox">Set Table</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Clean Front Room</li>
+					<li><input type="checkbox">Check Bin</li>
+				</ul>
+
+				<ul class="friday chores tyler">
+					<li><input type="checkbox">Fold Dry Washing</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Check Bin</li>
+					<li><input type="checkbox">Clean Highchairs</li>
+				</ul>
+
+				<ul class="saturday chores tyler">
+					<li><input type="checkbox">Dishwasher</li>
+					<li><input type="checkbox">Cat Litter</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Check Bin</li>
+				</ul>
+
+				<ul class="sunday chores tyler">
+					<li><input type="checkbox">Empty Dishwasher</li>
+					<li><input type="checkbox">Check Washing</li>
+					<li><input type="checkbox">Brush Cats and give them a treat</li>
+					<li><input type="checkbox">Clean Bedroom</li>
+					<li><input type="checkbox">Clean Kitchen</li>
+					<li><input type="checkbox">Check Bin</li>
+				</ul>
+
 			</div>
 		</div>
 	</body>
 
 	<script>
 		$(document).ready(function() {
+
+			$('#greeting,#name,#title').hide();
+			$('.chores').hide();
+
 			var n = new Date().getHours();
 			var msg = "Hello! ";
 			if (n < 12) { 
-				msg = "Good morning "; 
+				msg = "Good morning,"; 
 				$('body').css('background-image', 'url("morning.jpg")');
 			}
-			if (n > 12 && n < 18) { msg = "Good afternoon "; }
+			if (n > 12 && n < 18) { 
+				msg = "Good afternoon,"; 
+			}
 			if (n >= 18) { 
 				msg = "Good night ";
 				$('body').css('background-image', 'url("night.jpg")');
 			}
 			$('#greeting').text(msg);
+
+			var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+			var day = days[new Date().getDay() - 1];
+			
+			$('#day').text(day);
+		});
+
+		$('input').click(function () {
+			var list = $(this).parent();
+			var striked = list.css('text-decoration').split(' ')[0] == 'line-through';
+			if (!striked) {
+				list.css('text-decoration', 'line-through');	
+			} else {
+				list.css('text-decoration', 'none');
+			}
+		});
+
+		$('button').click(function() {
+			var butt = $(this).attr('id');
+			var intersection = '.' + $('#day').text().toLowerCase() + '.chores.' + butt.toLowerCase();
+			$(intersection).show();
+			$('#who').hide();
+			$('#name').text(butt + '!');
+			$('#greeting,#name,#title').show();
 		});
 	</script>
 
